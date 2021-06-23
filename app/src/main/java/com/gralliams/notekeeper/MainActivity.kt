@@ -15,8 +15,11 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            val value =  findViewById<TextView>(R.id.textDisplayedValue)
+            val originalValue = value.text.toString().toInt()
+            val newValue = originalValue * 2
+            value.text = newValue.toString()
+            Snackbar.make(view, "Original value is $originalValue, new is $newValue", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
     }
