@@ -6,20 +6,23 @@ class DataManager {
     //holds reference to notes in An arrayList
     var notes = ArrayList<NoteInfo>()
 
+    init {
+        initializeCourses()
+    }
 
     private fun initializeCourses(){
         //Initialize CourseInfo object
         //Add course to course HashMap with key and value
         var course = CourseInfo("EEE", "Fundamentals Of Electrical Engineering I")
-        courses.set(course.courseId, course)
+        courses[course.courseId] = course
 
         course = CourseInfo("GNS", "Use Of English")
-        courses.set(course.courseId, course)
+        courses[course.courseId] = course
 
         course = CourseInfo("CE", "Strength of materials")
-        courses.set(course.courseId, course )
+        courses[course.courseId] = course
 
         course = CourseInfo("CCE", "Computer and communication engineering")
-        courses.set(course.courseId, course)
+        courses[course.courseId] = course
     }
 }
