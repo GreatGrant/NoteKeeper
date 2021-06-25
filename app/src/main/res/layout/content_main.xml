@@ -8,31 +8,33 @@
 
 
     <EditText
-        android:id="@+id/editTextTextMultiLine3"
+        android:id="@+id/textNoteText"
         android:layout_width="347dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="Note text"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextMultiLine"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        app:layout_constraintEnd_toEndOf="@+id/textNoteTitle"
+        app:layout_constraintStart_toStartOf="@+id/textNoteTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textNoteTitle" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/textNoteTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="Note title"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/spinner2"
-        app:layout_constraintStart_toStartOf="@+id/spinner2"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerCourses"
+        app:layout_constraintStart_toStartOf="@+id/spinnerCourses"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCourses" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinnerCourses"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
