@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
+
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             val value =  findViewById<TextView>(R.id.textDisplayedValue)
             val originalValue = value.text.toString().toInt()
