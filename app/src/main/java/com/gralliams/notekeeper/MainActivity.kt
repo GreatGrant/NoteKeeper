@@ -6,6 +6,8 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +16,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-
+        var spinnerCourses = findViewById<Spinner>(R.id.spinnerCourses)
+        var dm = DataManager()
+        //Create adapter, with data and content layout
+        var adapter = ArrayAdapter<CourseInfo>(this,
+                android.R.layout.simple_spinner_item,
+                dm.courses.values.toList())
+        //Set dropdown layout
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        //Associate spinner with adapter
+        spinnerCourses.adapter = adapter
 
     }
 
