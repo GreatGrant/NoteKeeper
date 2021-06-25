@@ -17,11 +17,10 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         var spinnerCourses = findViewById<Spinner>(R.id.spinnerCourses)
-        var dm = DataManager()
         //Create adapter, with data and content layout
         var adapter = ArrayAdapter<CourseInfo>(this,
                 android.R.layout.simple_spinner_item,
-                dm.courses.values.toList())
+                DataManager.courses.values.toList())
         //Set dropdown layout
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         //Associate spinner with adapter
