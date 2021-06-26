@@ -1,22 +1,23 @@
 package com.gralliams.notekeeper
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Spinner
-import android.widget.TextView
-
+import kotlinx.android.synthetic.main.content_main.*
+//Todo fix bbug showing ll course title as cce
 class MainActivity : AppCompatActivity() {
+    var notePosition = POSITION_NOT_SET
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        var spinnerCourses = findViewById<Spinner>(R.id.spinnerCourses)
+
         //Create adapter, with data and content layout
         var adapter = ArrayAdapter<CourseInfo>(this,
                 android.R.layout.simple_spinner_item,
@@ -26,6 +27,19 @@ class MainActivity : AppCompatActivity() {
         //Associate spinner with adapter
         spinnerCourses.adapter = adapter
 
+        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION,  POSITION_NOT_SET)
+        if (notePosition != POSITION_NOT_SET)
+            displayNotes()
+
+    }
+
+    private fun displayNotes() {
+        var note = DataManager.notes[notePosition]
+        textNoteTitle.setText(note.title)
+        textNoteText.setText(note.text)
+
+        var coursePosition = DataManager.courses.values.indexOf(note.course)
+        spinnerCourses.setSelection(coursePosition)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
