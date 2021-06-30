@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import kotlinx.android.synthetic.main.content_main.*
-//Todo fix bbug showing ll course title as cce
 class MainActivity : AppCompatActivity() {
     var notePosition = POSITION_NOT_SET
 
