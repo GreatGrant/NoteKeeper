@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
+import androidx.appcompat.content.res.AppCompatResources
 import kotlinx.android.synthetic.main.content_main.*
 class MainActivity : AppCompatActivity() {
     var notePosition = POSITION_NOT_SET
@@ -26,18 +25,18 @@ class MainActivity : AppCompatActivity() {
         //Associate spinner with adapter
         spinnerCourses.adapter = adapter
 
-        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION,  POSITION_NOT_SET)
+        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, POSITION_NOT_SET)
         if (notePosition != POSITION_NOT_SET)
             displayNotes()
 
     }
 
     private fun displayNotes() {
-        var note = DataManager.notes[notePosition]
+        val note = DataManager.notes[notePosition]
         textNoteTitle.setText(note.title)
         textNoteText.setText(note.text)
 
-        var coursePosition = DataManager.courses.values.indexOf(note.course)
+        val coursePosition = DataManager.courses.values.indexOf(note.course)
         spinnerCourses.setSelection(coursePosition)
     }
 
@@ -52,9 +51,47 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_next -> {
+                moveNext()
+                true
+            }
+            R.id.action_previous -> {
+                movePrevious()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    private fun movePrevious() {
+        notePosition--
+        displayNotes()
+        invalidateOptionsMenu()
+    }
+
+    private fun moveNext() {
+        notePosition++
+        displayNotes()
+        invalidateOptionsMenu() //calls onPrepareOptionsMenu
+
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if (notePosition >= DataManager.notes.lastIndex) {
+            val menuItem = menu?.findItem(R.id.action_next)
+            if (menuItem != null) {
+                menuItem.icon = AppCompatResources.getDrawable(this, R.drawable.ic_baseline_cancel_24)
+                menuItem.isEnabled = false
+            }
+        }else if(notePosition <= 0) {
+            val menuItem = menu?.findItem(R.id.action_previous)
+            if (menuItem != null) {
+                menuItem.icon = AppCompatResources.getDrawable(this, R.drawable.ic_baseline_cancel_24)
+                menuItem.isEnabled = false
+
+            }
+
+        }
+        return super.onPrepareOptionsMenu(menu)
+    }
 }

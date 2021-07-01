@@ -31,13 +31,16 @@ object DataManager {
     }
 
     private fun initializeNotes() {
-        var note = arrayOf(NoteInfo(course, "Circuit analysis", "Into to electric circuits"),
-                            NoteInfo(course, "Verb, subject, predicate", "English foundations"),
-                            NoteInfo(course, "Shear forces", "Types of forces"),
-                            NoteInfo(course, "Computer networking", "Into to networking"))
-        for (item in note){
-            notes.add(item)
-        }
+
+            var note = arrayOf(NoteInfo(course, "Circuit analysis", "Into to electric circuits"),
+                    NoteInfo(course, "Verb, subject, predicate", "English foundations"),
+                    NoteInfo(course, "Shear forces", "Types of forces"),
+                    NoteInfo(course, "Computer networking", "Into to networking"))
+
+            for (item in note){
+                notes.add(item)
+            }
+
 
     }
 
