@@ -7,12 +7,12 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.content.res.AppCompatResources
 import kotlinx.android.synthetic.main.content_main.*
-class MainActivity : AppCompatActivity() {
+class NoteActivity : AppCompatActivity() {
     var notePosition = POSITION_NOT_SET
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_note)
         setSupportActionBar(findViewById(R.id.toolbar))
 
 
@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         //Associate spinner with adapter
         spinnerCourses.adapter = adapter
 
-        notePosition = savedInstanceState?.getInt(NOTE_POSITION, POSITION_NOT_SET) ?:
-        intent.getIntExtra(NOTE_POSITION, POSITION_NOT_SET)
+//        notePosition = savedInstanceState?.getInt(NOTE_POSITION, POSITION_NOT_SET) ?:
+//        intent.getIntExtra(NOTE_POSITION, POSITION_NOT_SET)
 
         if (notePosition != POSITION_NOT_SET)
             displayNotes()
