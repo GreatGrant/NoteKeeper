@@ -41,6 +41,7 @@ object DataManager {
     private fun initializeNotes() {
 
 
+        //Create array of notes
           var note = arrayOf(
                     NoteInfo(courses["EEE"], "Circuit analysis", "Into to electric circuits"),
                     NoteInfo(courses["GNS"], "Verb, subject, predicate", "English foundations"),
