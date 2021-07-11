@@ -2,6 +2,7 @@ package com.gralliams.notekeeper
 
 object DataManager {
      lateinit var course: CourseInfo
+     lateinit var  note: NoteInfo
 
     //Holds reference to courses in a HashMap using Id of type String
     var courses = HashMap<String, CourseInfo>()
@@ -28,18 +29,34 @@ object DataManager {
 
         course = CourseInfo("CCE", "Computer and communication engineering")
         courses[course.courseId] = course
+
+        course = CourseInfo("ME", "Engineering mechanics")
+        courses[course.courseId] = course
+
+        course = CourseInfo("CHE", "Chemical engineering")
+        courses[course.courseId] = course
+
     }
 
     private fun initializeNotes() {
 
-            var note = arrayOf(NoteInfo(course, "Circuit analysis", "Into to electric circuits"),
-                    NoteInfo(course, "Verb, subject, predicate", "English foundations"),
-                    NoteInfo(course, "Shear forces", "Types of forces"),
-                    NoteInfo(course, "Computer networking", "Into to networking"))
+//        note = NoteInfo(course, "Circuit analysis", "Into to electric circuits")
+//        notes.add(note)
 
-            for (item in note){
-                notes.add(item)
+          var note = arrayOf(NoteInfo(courses["EEE"], "Circuit analysis", "Into to electric circuits"),
+                    NoteInfo(courses["GNS"], "Verb, subject, predicate", "English foundations"),
+                    NoteInfo(courses["CE"], "Shear forces", "Types of forces"),
+                    NoteInfo(courses["CCE"], "Computer networking", "Into to networking"),
+                    NoteInfo(courses["ME"], "Introduction to mechanics", "Types of mechanics"),
+                    NoteInfo(courses["CHE"], "Chemical engineering foundations", "Branches of chemical engineering"))
+
+
+            for (note in note){
+                notes.add(note)
             }
+
+
+
 
 
     }
