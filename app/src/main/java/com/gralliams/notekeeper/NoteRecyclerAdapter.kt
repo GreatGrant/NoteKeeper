@@ -30,8 +30,8 @@ class NoteRecyclerAdapter(private val context: Context, private val notes: List<
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var textCourse = itemView.findViewById<TextView>(R.id.courseItem)
-        var textTitle = itemView.findViewById<TextView>(R.id.courseTextItem)
+        var textCourse = itemView.findViewById<TextView?>(R.id.courseItem)
+        var textTitle = itemView.findViewById<TextView?>(R.id.courseTextItem)
 
         var notePosition = 0
 

@@ -25,8 +25,8 @@ class NoteActivity : AppCompatActivity() {
         //Associate spinner with adapter
         spinnerCourses.adapter = adapter
 
-//        notePosition = savedInstanceState?.getInt(NOTE_POSITION, POSITION_NOT_SET) ?:
-//        intent.getIntExtra(NOTE_POSITION, POSITION_NOT_SET)
+        notePosition = savedInstanceState?.getInt(NOTE_POSITION, POSITION_NOT_SET) ?:
+        intent.getIntExtra(NOTE_POSITION, POSITION_NOT_SET)
 
         if (notePosition != POSITION_NOT_SET)
             displayNotes()
