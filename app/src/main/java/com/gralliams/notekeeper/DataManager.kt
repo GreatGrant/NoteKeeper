@@ -40,19 +40,19 @@ object DataManager {
 
     private fun initializeNotes() {
 
-//        note = NoteInfo(course, "Circuit analysis", "Into to electric circuits")
-//        notes.add(note)
 
-          var note = arrayOf(NoteInfo(courses["EEE"], "Circuit analysis", "Into to electric circuits"),
+          var note = arrayOf(
+                    NoteInfo(courses["EEE"], "Circuit analysis", "Into to electric circuits"),
                     NoteInfo(courses["GNS"], "Verb, subject, predicate", "English foundations"),
                     NoteInfo(courses["CE"], "Shear forces", "Types of forces"),
                     NoteInfo(courses["CCE"], "Computer networking", "Into to networking"),
                     NoteInfo(courses["ME"], "Introduction to mechanics", "Types of mechanics"),
-                    NoteInfo(courses["CHE"], "Chemical engineering foundations", "Branches of chemical engineering"))
+                    NoteInfo(courses["CHE"], "Chemical engineering foundations", "Branches of chemical engineering")
+                            )
 
-
-            for (note in note){
-                notes.add(note)
+            //Add array of notes to arrayList of notes
+            for (notePiece in note){
+                notes.add(notePiece)
             }
 
 
