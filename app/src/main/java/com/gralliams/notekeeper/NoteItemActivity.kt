@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_note_item.*
@@ -39,11 +40,6 @@ class NoteItemActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         recyclerViewItems.layoutManager = LinearLayoutManager(this)
         recyclerViewItems.adapter = NoteRecyclerAdapter(this, DataManager.notes)
 
-        val navView: NavigationView = findViewById(R.id.nav_view)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawer_layout)
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.drawer_open,
@@ -65,11 +61,16 @@ class NoteItemActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.nav_home -> Snackbar.make(recyclerViewItems, "You clicked on home", Snackbar.LENGTH_LONG).show()
-            R.id.nav_gallery -> Snackbar.make(recyclerViewItems, "You clicked on gallery", Snackbar.LENGTH_LONG).show()
-                R.id.nav_slideshow -> Snackbar.make(recyclerViewItems, "You clicked on slideshow", Snackbar.LENGTH_LONG).show()
+            R.id.nav_home -> handleSelection("You clicked home")
+            R.id.nav_gallery -> handleSelection("Gallery clicked")
+                R.id.nav_slideshow -> handleSelection("Slide clicked")
         }
+        drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun handleSelection(text: String) {
+        Snackbar.make(recyclerViewItems, text, Snackbar.LENGTH_LONG).show()
     }
 
     override fun onResume() {
@@ -77,5 +78,13 @@ class NoteItemActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         //Get reference to adapter
         recyclerViewItems.adapter?.notifyDataSetChanged()
+    }
+
+    override fun onBackPressed() {
+
+        if (drawer_layout.isDrawerOpen(GravityCompat.START))
+        drawer_layout.closeDrawer(GravityCompat.START)
+        else
+            super.onBackPressed()
     }
 }
