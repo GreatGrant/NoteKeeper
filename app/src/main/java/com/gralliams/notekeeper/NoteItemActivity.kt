@@ -18,7 +18,10 @@ import kotlinx.android.synthetic.main.content_note_list.*
 
 class NoteItemActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
+
+  private val noteLayoutManager by lazy { LinearLayoutManager(this) }
+
+    private val noteRecyclerAdapter by lazy { NoteRecyclerAdapter(this, DataManager.notes) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +29,12 @@ class NoteItemActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         setSupportActionBar(toolbar)
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
+        fab.setOnClickListener {
             startActivity(Intent(this, NoteActivity::class.java))
         }
 
-        recyclerViewItems.layoutManager = LinearLayoutManager(this)
-        recyclerViewItems.adapter = NoteRecyclerAdapter(this, DataManager.notes)
+        recyclerViewItems.layoutManager = noteLayoutManager
+        recyclerViewItems.adapter = noteRecyclerAdapter
 
 
         val toggle = ActionBarDrawerToggle(
