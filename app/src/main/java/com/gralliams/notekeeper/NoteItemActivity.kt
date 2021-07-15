@@ -33,8 +33,7 @@ class NoteItemActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
             startActivity(Intent(this, NoteActivity::class.java))
         }
 
-        recyclerViewItems.layoutManager = noteLayoutManager
-        recyclerViewItems.adapter = noteRecyclerAdapter
+        displayNotes()
 
 
         val toggle = ActionBarDrawerToggle(
@@ -48,6 +47,13 @@ class NoteItemActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
     }
 
+    private fun displayNotes() {
+        recyclerViewItems.layoutManager = noteLayoutManager
+        recyclerViewItems.adapter = noteRecyclerAdapter
+
+        nav_view.menu.findItem(R.id.nav_notes).isChecked = true
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.note_item, menu)
@@ -57,7 +63,7 @@ class NoteItemActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.nav_notes -> handleSelection("You clicked home")
+            R.id.nav_notes -> displayNotes()
             R.id.nav_courses -> handleSelection("Gallery clicked")
                 R.id.nav_share -> handleSelection("Slide clicked")
         }
