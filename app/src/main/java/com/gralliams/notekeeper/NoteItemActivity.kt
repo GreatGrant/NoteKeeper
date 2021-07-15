@@ -1,5 +1,6 @@
 package com.gralliams.notekeeper
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -32,8 +33,7 @@ class NoteItemActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            startActivity(Intent(this, NoteActivity::class.java))
         }
 
         recyclerViewItems.layoutManager = LinearLayoutManager(this)
