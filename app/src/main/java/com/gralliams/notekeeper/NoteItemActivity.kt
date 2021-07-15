@@ -71,4 +71,11 @@ class NoteItemActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         }
         return true
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        //Get reference to adapter
+        recyclerViewItems.adapter?.notifyDataSetChanged()
+    }
 }
